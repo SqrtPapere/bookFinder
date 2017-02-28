@@ -1,0 +1,138 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>bookFinder</title>
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+
+  <link href="http://code.ionicframework.com/nightly/css/ionic.min.css" rel="stylesheet">
+  <script src="http://code.ionicframework.com/nightly/js/ionic.bundle.js"></script>
+  <script src="//code.ionicframework.com/1.0.0-beta.13/js/ionic.bundle.js"></script>
+
+  <link href="css/style.css" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script type="text/javascript" src="jssha2/sha2.js"></script>
+  <script src="lib/ionic/js/ionic.bundle.js"></script>
+  <script src="lib/ngCordova/dist/ng-cordova.js"></script>
+  <link href="lib/ionic/css/ionic.css" rel="stylesheet">
+  <script src="js/amzonRequest.js"></script>
+  <script src="js/ng-cordova.min.js"></script>
+
+  <script src="js/app.js"></script>
+  <script src="cordova.js"></script> <!-- cordova.js or phonegap.js file must be the last script-->
+</head>
+
+<body ng-app="bookFinder" ng-controller="TodoCtrl" id="bod">
+
+<ion-side-menus >
+
+  <!-- Center content -->
+
+  <ion-side-menu-content>
+    <!-- Questo è l'header del Center -->
+
+    <ion-header-bar class="bar-dark">
+      <button class="button button-icon" ng-click="toggleSearchedBooks()">
+        <i id="goleft" class="icon ion-navicon"></i>
+      </button>
+      <h1 id= "h1center" class="title"> bookFinder </h1>
+    </ion-header-bar>
+
+
+    <!-- Questo è il contenuto della home -->
+
+
+    <ion-content class="has-header padding bar-dark" scroll="true" ng-controller="HomeController as home_ctrl" id="center">
+
+      <img src="{{home_ctrl.current_image}}" class="picture" >
+
+      <button class="button button-block" id = "takepic" ng-click="takePicture()">
+        <i class="icon ion-camera"></i> Take Picture
+      </button>
+
+
+      <label class="item item-input" id="resultlabel">
+        <input type="text" id="result" placeholder="Please adjust the keyword if needed">
+      </label>
+
+
+      <button  class="button button-block" id="get_book_amazon" ng-click="newProj(); IfKWtoggleRight()">
+        <img src="img/Amaz.png" style="width: 23px;height: 23px" id="iconamaz"> Search book
+      </button>
+      <p id="infohead">      <img src="img/info_icon%202.png" class="picture" id="info" ng-click="showAlert()">
+      </p>
+
+
+
+
+
+    </ion-content>
+  </ion-side-menu-content>
+
+
+  <!-- Left menu -->
+
+  <ion-side-menu side="left">
+
+    <!-- Questo è l'header del Left -->
+    <ion-header-bar class="bar-dark">
+      <h1 id="left-title" class="title">Searched Books</h1>
+    </ion-header-bar>
+    <ion-header-bar class="bar-subheader" id="searchhead">
+      <input id="search" type="search"
+             placeholder="Filter keywords..."
+             ng-model="search">
+    </ion-header-bar>
+
+
+      <!-- Questo è il contenuto del left -->
+    <ion-content scroll="true" class="has-header padding" id="left">
+      <ion-list id="listhead" show-delete="false" can-swipe="true">
+        <ion-item id="list" ng-repeat="project in projects | orderBy:'title' | searchContacts:search" ng-click="selectProject(project, $index)">
+          {{project.title}}
+          <ion-option-button  class="button-assertive icon ion-trash-a" ng-click="removeItem($index)"></ion-option-button>
+        </ion-item>
+      </ion-list>
+    </ion-content>
+  </ion-side-menu>
+
+  <!-- RIGHT -->
+
+  <ion-side-menu side="right" width="330">
+
+
+    <ion-header-bar class="bar-dark" ng-controller="TodoCtrl">
+
+      <button class="button button-icon" ng-click="toggleHome()">
+        <i class="icon ion-arrow-left-c" style="color:rgba(255, 173, 9, 0.5)"></i>
+      </button>
+      <h1 class="title" id="book-title">bookFinder</h1>
+
+    </ion-header-bar>
+
+    <ion-content class="has-header padding" scroll="true" ng-controller="TodoCtrl" id="right">
+
+      <ul id="menu"></ul>
+      <div id = "notList">
+            <button class="button button-block" id="back">
+              Go back to list
+            </button>
+            <button class="button button-block" ng-click = "openBrowser()" id="GOAmazon">
+              Go to Amazon
+            </button>
+            <div id="containerIframe">
+                <iframe width="100%" height="100%" src="" sandbox id="frameDemo" ></iframe>
+            </div>
+      </div>
+
+    </ion-content>
+  </ion-side-menu>
+
+</ion-side-menus>
+
+</body>
+</html>
+
+
+
