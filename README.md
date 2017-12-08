@@ -13,7 +13,7 @@ The app uses:
 
 ### Demo
 
-[![Screen_Shot_2017-12-08_at_19.55.25.png](https://s17.postimg.org/imld1nxsv/Screen_Shot_2017-12-08_at_19.55.25.png)](https://postimg.org/image/r4ut604bf/)
+[![Screen_Shot_2017-12-08_at_19.55.25.png](https://s17.postimg.org/imld1nxsv/Screen_Shot_2017-12-08_at_19.55.25.png) <!-- .element height="50%" width="50%" -->](https://postimg.org/image/r4ut604bf/) <!-- .element height="10%" width="10%" -->
 
 [![Screen_Shot_2017-12-08_at_19.55.52.png](https://s17.postimg.org/9rkir6jb3/Screen_Shot_2017-12-08_at_19.55.52.png)](https://postimg.org/image/izcr7vqd7/)
 
